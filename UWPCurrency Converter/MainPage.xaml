@@ -15,7 +15,7 @@
         </Grid.RowDefinitions>
         <Border Background="LightGray">
             <TextBlock 
-            x:Name="tbckTitle"
+            x:Name="txtblTitle"
             HorizontalAlignment="Stretch"
             VerticalAlignment="Stretch" 
             TextWrapping="Wrap" 

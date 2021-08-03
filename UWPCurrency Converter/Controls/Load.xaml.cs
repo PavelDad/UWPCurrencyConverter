@@ -24,25 +24,6 @@ namespace UWPCurrency_Converter.Controls
         {
             this.InitializeComponent();
             MyStoryBoard.Begin();
-            //timer.Elapsed += Timer_Elapsed;
-            //timer.Start();
-        }
-
-        //private void Timer_Elapsed(object sender, ElapsedEventArgs e)
-        //{
-        //    if (SpinerRotate.Rotation == 360)
-        //    {
-        //        SpinerRotate.Rotation = 1;
-        //    }
-        //    else
-        //    {
-        //        SpinerRotate.Rotation++;
-        //    }
-        //}
-
-        private void Grid_Loading(FrameworkElement sender, object args)
-        {
-
         }
     }
 }

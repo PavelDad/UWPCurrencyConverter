@@ -19,7 +19,7 @@
         </Storyboard>
     </UserControl.Resources>
 
-    <Grid Loading="Grid_Loading">
+    <Grid>
 
 
         <Image
