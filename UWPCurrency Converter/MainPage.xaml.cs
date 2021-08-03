@@ -33,28 +33,38 @@ namespace UWPCurrency_Converter
             Load load = new Load();
             Grid.SetRow(load, 1);
             MainGrid.Children.Add(load);
-                        
-            var valute = JsonSerializer.Deserialize<DataSerialize>(await GetjsonStream());
-            Valutes = valute.Valute.Select(x => x.Value).OrderBy(x=>x.CharCode).ToList();
-            Valutes.Insert(0, new Valute() { 
-                CharCode = "RUB",
-                Name = "Российский Рубль",
-                Nominal = 1,
-                Value = 1
-            });
 
-            Main main = new Main(this);
-            Grid.SetRow(main, 1);
-            MainGrid.Children.Add(main);
+            try
+            {
+                var valute = JsonSerializer.Deserialize<DataSerialize>(await GetjsonStream());
+                Valutes = valute.Valute.Select(x => x.Value).OrderBy(x => x.CharCode).ToList();
+                Valutes.Insert(0, new Valute()
+                {
+                    CharCode = "RUB",
+                    Name = "Российский Рубль",
+                    Nominal = 1,
+                    Value = 1
+                });
 
-            //ChangeValute changeValute = new ChangeValute(this);
-            //Grid.SetRow(changeValute, 1);
-            //Grid.Children.Add(changeValute);
+                Main main = new Main(this);
+                Grid.SetRow(main, 1);
+                MainGrid.Children.Add(main);
 
-            MainGrid.Children.Remove(load);
-
-
-
+                MainGrid.Children.Remove(load);
+            }
+            catch
+            {
+                foreach (var item in MainGrid.Children)
+                {
+                    if (item is UserControl)
+                    {
+                        MainGrid.Children.Remove(item);
+                    }
+                }
+                ErrorControl errorControl = new ErrorControl("Ошибка загрузки данных. Попробуйте позже.");
+                Grid.SetRow(errorControl, 1);
+                MainGrid.Children.Add(errorControl);
+            }
         }
 
         public void SetTitle(string text)

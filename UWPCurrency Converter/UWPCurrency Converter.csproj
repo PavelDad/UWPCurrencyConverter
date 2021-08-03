@@ -122,6 +122,9 @@
     <Compile Include="Controls\ChangeValute.xaml.cs">
       <DependentUpon>ChangeValute.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Controls\ErrorControl.xaml.cs">
+      <DependentUpon>ErrorControl.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Controls\Load.xaml.cs">
       <DependentUpon>Load.xaml</DependentUpon>
     </Compile>
@@ -141,6 +144,7 @@
     </AppxManifest>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Assets\icons8_error_64px_1.png" />
     <Content Include="Assets\icons8_iphone_spinner_64px.png" />
     <Content Include="Properties\Default.rd.xml" />
     <Content Include="Assets\LockScreenLogo.scale-200.png" />
@@ -157,6 +161,10 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Page Include="Controls\ChangeValute.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\ErrorControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
