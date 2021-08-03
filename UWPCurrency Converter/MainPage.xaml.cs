@@ -35,9 +35,21 @@ namespace UWPCurrency_Converter
             Grid.Children.Add(load);
                         
             var valute = JsonSerializer.Deserialize<DataSerialize>(await GetjsonStream());
-            Valutes = valute.Valute.Select(x => x.Value).ToList();
+            Valutes = valute.Valute.Select(x => x.Value).OrderBy(x=>x.CharCode).ToList();
+            Valutes.Insert(0, new Valute() { 
+                CharCode = "RU",
+                Name = "Рубль",
+                Nominal = 1,
+                Value = 1
+            });
+
+            Main main = new Main(Valutes);
+            Grid.SetRow(main, 1);
+            Grid.Children.Add(main);
 
             Grid.Children.Remove(load);
+
+
 
         }
 
