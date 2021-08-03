@@ -24,14 +24,14 @@
         <TextBox KeyUp="valute2Count_KeyUp" MaxLength="15" x:Name="valute2Count" FontSize="24" Grid.Column="1" HorizontalAlignment="Stretch" Text="TextBox" TextWrapping="Wrap" VerticalAlignment="Center" TextAlignment="Center" Margin="20,0"/>
         <TextBlock x:Name="valute1CharCode" FontSize="24" Grid.Row="1" HorizontalAlignment="Stretch" Text="TextBox" TextWrapping="Wrap" VerticalAlignment="Center" TextAlignment="Center" Margin="20"/>
         <TextBlock x:Name="valute2CharCode" FontSize="24" Grid.Row="1" Grid.Column="1" HorizontalAlignment="Stretch" Text="TextBox" TextWrapping="Wrap" VerticalAlignment="Center" TextAlignment="Center" Margin="20,0"/>
-        <HyperlinkButton FontSize="24" Content="Изменить валюту" Grid.Row="2" HorizontalAlignment="Center" Margin="20,0">
+        <HyperlinkButton Click="HyperlinkButtonFirst_Click" FontSize="24" Content="Изменить валюту" Grid.Row="2" HorizontalAlignment="Center" Margin="20,0">
             <HyperlinkButton.ContentTemplate>
                 <DataTemplate>
                     <TextBlock Text="{Binding}" TextWrapping="Wrap" TextAlignment="Center" />
                 </DataTemplate>
             </HyperlinkButton.ContentTemplate>
         </HyperlinkButton>
-        <HyperlinkButton FontSize="24" Content="Изменить валюту" Grid.Row="2" Grid.Column="1" HorizontalAlignment="Center" Margin="20,0">
+        <HyperlinkButton Click="HyperlinkButtonSecond_Click" FontSize="24" Content="Изменить валюту" Grid.Row="2" Grid.Column="1" HorizontalAlignment="Center" Margin="20,0">
             <HyperlinkButton.ContentTemplate>
                 <DataTemplate>
                     <TextBlock Text="{Binding}" TextWrapping="Wrap" TextAlignment="Center" />

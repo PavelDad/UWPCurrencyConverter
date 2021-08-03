@@ -20,16 +20,16 @@ namespace UWPCurrency_Converter.Controls
 {
     public sealed partial class Main : UserControl
     {
-        Valute valute1, valute2;
-        public List<Valute> Valutes { get; }
+        public Valute valute1, valute2;
+        public int ChangingValute;
+        public MainPage MainPage;
 
-
-        public Main(List<Valute> valutes)
+        public Main(MainPage mainPage)
         {
             this.InitializeComponent();
-            Valutes = valutes;
-            valute1 = valutes[0];
-            valute2 = valutes[1];//.Find(x=>x.CharCode == "USD");
+            valute1 = mainPage.Valutes[0];
+            valute2 = mainPage.Valutes[1];//.Find(x=>x.CharCode == "USD");
+            MainPage = mainPage;
         }
 
         private void valute1Count_KeyUp(object sender, KeyRoutedEventArgs e)
@@ -62,14 +62,47 @@ namespace UWPCurrency_Converter.Controls
             valute1Count.Text = $"{valute2ValueCalculate:0.####}";
         }
 
+        private void HyperlinkButtonFirst_Click(object sender, RoutedEventArgs e)
+        {
+            ChangingValute = 1;
+            ChangeValute changeValute = new ChangeValute(this, ChangingValute);
+            Grid.SetRow(changeValute, 1);
+            MainPage.MainGrid.Children.Add(changeValute);
+            this.Visibility = Visibility.Collapsed;
+        }
+
+        private void HyperlinkButtonSecond_Click(object sender, RoutedEventArgs e)
+        {
+            ChangingValute = 2;
+            ChangeValute changeValute = new ChangeValute(this, ChangingValute);
+            Grid.SetRow(changeValute, 1);
+            MainPage.MainGrid.Children.Add(changeValute);
+            this.Visibility = Visibility.Collapsed;
+        }
+
         private void UserControl_Loading(FrameworkElement sender, object args)
         {
-            valute1Count.Text = "73";
+            valute1Count.Text = "1";
             var valute2ValueCalculate = (valute1.Value / valute1.Nominal) / (valute2.Value / valute2.Nominal) * decimal.Parse(valute1Count.Text);
             valute2Count.Text = $"{valute2ValueCalculate:0.####}";
             valute1CharCode.Text = valute1.CharCode;
             valute2CharCode.Text = valute2.CharCode;
         }
 
+        public void ReloadValutes()
+        {
+            MainPage.SetTitle("Конвертер валют");
+            valute1CharCode.Text = valute1.CharCode;
+            valute2CharCode.Text = valute2.CharCode;
+            if (ChangingValute == 1)
+            {
+                valute1Count_KeyUp(valute1Count, null);
+            }
+            else
+            {
+                valute2Count_KeyUp(valute2Count, null);
+            }
+            this.Visibility = Visibility.Visible;
+        }
     }
 }
