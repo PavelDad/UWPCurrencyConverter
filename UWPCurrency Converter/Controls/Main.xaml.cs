@@ -18,20 +18,30 @@ using Windows.UI.Xaml.Navigation;
 
 namespace UWPCurrency_Converter.Controls
 {
+    /// <summary>
+    /// Основное окно программы
+    /// </summary>
     public sealed partial class Main : UserControl
     {
         public Valute valute1, valute2;
         public int ChangingValute;
         public MainPage MainPage;
 
+        /// <summary>
+        /// Конструктор
+        /// </summary>
+        /// <param name="mainPage">Ссылка на страницу, на которой отображается Control</param>
         public Main(MainPage mainPage)
         {
             this.InitializeComponent();
             valute1 = mainPage.Valutes[0];
-            valute2 = mainPage.Valutes[1];//.Find(x=>x.CharCode == "USD");
+            valute2 = mainPage.Valutes[1];
             MainPage = mainPage;
         }
 
+        /// <summary>
+        /// Нажатие клавиши левого поля для ввода
+        /// </summary>
         private void valute1Count_KeyUp(object sender, KeyRoutedEventArgs e)
         {
             decimal valute1CountParse;
@@ -47,6 +57,9 @@ namespace UWPCurrency_Converter.Controls
             valute2Count.Text = $"{valute2ValueCalculate:0.####}";
         }
 
+        /// <summary>
+        /// Нажатие клавиши правого поля для ввода
+        /// </summary>
         private void valute2Count_KeyUp(object sender, KeyRoutedEventArgs e)
         {
             decimal valute2CountParse;
@@ -62,6 +75,9 @@ namespace UWPCurrency_Converter.Controls
             valute1Count.Text = $"{valute2ValueCalculate:0.####}";
         }
 
+        /// <summary>
+        /// Выбор левой валюты
+        /// </summary>
         private void HyperlinkButtonFirst_Click(object sender, RoutedEventArgs e)
         {
             ChangingValute = 1;
@@ -71,6 +87,9 @@ namespace UWPCurrency_Converter.Controls
             this.Visibility = Visibility.Collapsed;
         }
 
+        /// <summary>
+        /// Выбор правой валюты
+        /// </summary>
         private void HyperlinkButtonSecond_Click(object sender, RoutedEventArgs e)
         {
             ChangingValute = 2;
@@ -80,6 +99,9 @@ namespace UWPCurrency_Converter.Controls
             this.Visibility = Visibility.Collapsed;
         }
 
+        /// <summary>
+        /// Загрузка компонента (заполнение начальными значениями)
+        /// </summary>
         private void UserControl_Loading(FrameworkElement sender, object args)
         {
             valute1Count.Text = "1";
@@ -89,6 +111,9 @@ namespace UWPCurrency_Converter.Controls
             valute2CharCode.Text = valute2.CharCode;
         }
 
+        /// <summary>
+        /// Обновление сумм и надписей при выборе валюты
+        /// </summary>
         public void ReloadValutes()
         {
             MainPage.SetTitle("Конвертер валют");

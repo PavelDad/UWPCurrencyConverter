@@ -6,6 +6,9 @@ using System.Threading.Tasks;
 
 namespace UWPCurrency_Converter.Model
 {
+    /// <summary>
+    /// Класс для хранения списка валют
+    /// </summary>
     [Serializable]
     public class Valute
     {

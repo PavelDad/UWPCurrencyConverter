@@ -6,6 +6,9 @@ using System.Threading.Tasks;
 
 namespace UWPCurrency_Converter.Model
 {
+    /// <summary>
+    /// Класс для сериализации JSON данных с сервера
+    /// </summary>
     [Serializable]
     public class DataSerialize
     {

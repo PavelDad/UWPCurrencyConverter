@@ -16,11 +16,19 @@ using Windows.UI.Xaml.Navigation;
 
 namespace UWPCurrency_Converter.Controls
 {
+    /// <summary>
+    /// Элемент для отображения списка и выбора вылют
+    /// </summary>
     public sealed partial class ChangeValute : UserControl
     {
         private readonly Main _main;
         private readonly int _changingValute;
         List<Valute> _valutes;
+        /// <summary>
+        /// Конструктор
+        /// </summary>
+        /// <param name="main">Ссылка на вызывающий элемент</param>
+        /// <param name="changingValute">Номер валюты для выбора: 1 - левая, 2 - правая валюта</param>
         public ChangeValute(Main main, int changingValute)
         {
             this.InitializeComponent();
@@ -29,7 +37,9 @@ namespace UWPCurrency_Converter.Controls
             _main = main;
             _changingValute = changingValute;
         }
-
+        /// <summary>
+        /// Выбор элемента списка (валюты) и передача выбранной валюты в вызвавшее окно
+        /// </summary>
         private void ValuteList_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             switch (_changingValute)

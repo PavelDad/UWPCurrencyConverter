@@ -17,9 +17,11 @@ using Windows.UI.Xaml.Navigation;
 
 namespace UWPCurrency_Converter.Controls
 {
+    /// <summary>
+    /// Окно загрузки
+    /// </summary>
     public sealed partial class Load : UserControl
     {
-        //Timer timer = new Timer(10);
         public Load()
         {
             this.InitializeComponent();

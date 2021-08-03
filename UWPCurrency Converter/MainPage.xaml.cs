@@ -22,12 +22,18 @@ namespace UWPCurrency_Converter
 {
     public sealed partial class MainPage : Page
     {
+        /// <summary>
+        /// Список валют
+        /// </summary>
         public List<Valute> Valutes { get; set; }
         public MainPage()
         {
             this.InitializeComponent();
         }
 
+        /// <summary>
+        /// Загрузка главной страницы
+        /// </summary>
         private async void Page_Loading(FrameworkElement sender, object args)
         {
             Load load = new Load();
@@ -67,11 +73,18 @@ namespace UWPCurrency_Converter
             }
         }
 
+        /// <summary>
+        /// Метод смены заголовка окна
+        /// </summary>
+        /// <param name="text">Текст заголовка</param>
         public void SetTitle(string text)
         {
             txtblTitle.Text = text;
         }
 
+        /// <summary>
+        /// Получение данных с сервера
+        /// </summary>
         public async Task<string> GetjsonStream()
         {
             HttpClient client = new HttpClient();

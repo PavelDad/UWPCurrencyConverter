@@ -17,16 +17,22 @@ using Windows.UI.Xaml.Navigation;
 
 namespace UWPCurrency_Converter.Controls
 {
+    /// <summary>
+    /// Окно для отображения ошибки
+    /// </summary>
     public sealed partial class ErrorControl : UserControl
     {
         public string TextError { get; set; }
+        /// <summary>
+        /// Конструктор
+        /// </summary>
+        /// <param name="textError">Текст ошибки</param>
         public ErrorControl(string textError)
         {
             if (string.IsNullOrWhiteSpace(textError))
             {
                 TextError = "Непредвиденная ошибка, перезапустите программу.";
             }
-
             this.InitializeComponent();
             TextError = textError;
         }
